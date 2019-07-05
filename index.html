@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home page</title>
+
+	 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    
+    <link rel="shortcut icon" type="image/jpg" href="img/pic4.jpg">
+    
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="home_page.css">
+
+</head>
+<body>
+	
+	<div class="navbar navbar-default navbar-fixed-top " data-spy="affix" data-offset-top="400">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:black">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse" id="nav-l">
+      <ul class="nav navbar-nav">
+      	<li><img src="img/logo.png" alt="wit" class="img-rounded rounded-circle" style="width:60px; height:80px;margin-left: -70px;padding-top: 5px;"></li>	
+      	<li><a href="#" onclick="AlertIt()" class="nav nav-link " style="font-size: 30px; padding-top: 30px;">Home</a></li>
+        <li><a href="#" onclick="AlertIt()" class="nav nav-link " style="font-size: 30px; padding-top: 30px;">Events</a></li>
+        <li><a href="#" onclick="AlertIt()" class="nav nav-link " style="font-size: 30px; padding-top: 30px;">Contact us</a></li>
+
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li>
+           <button id="sign/register" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm" style="margin-top: 15px; margin-bottom: 10px; ;">Student Sign In</button>
+        </li>
+        <!-- <li>
+           <button id="signout" class="btn btn-danger btn-lg" href="#signup" name="logout_btn" data-toggle="modal" data-target=".login_modal" style="margin-top: 15px; margin-bottom: 10px;margin-left: 35px;display: none;">Logout</button>
+        </li> -->
+        <li>
+           <button id="sign/register" class="btn btn-secondary btn-lg" href="#signup" data-toggle="modal" data-target=".login_modal" style="margin-top: 15px; margin-bottom: 10px;margin-left: 35px;">Admin Login</button>
+        </li>
+      </ul>
+    </div>    
+  </div>
+</div>
+
+
+
+
+
+<!-- admin login -->
+
+<div class="modal fade login_modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+   <div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>Login to Your Account</h1><br>
+			<form action="admin_login_page.php" method="post">
+				<input type="text" name="admin_user" placeholder="Username" required="required">
+				<input type="password" name="admin_pass" placeholder="Password" required="required">
+				<input type="submit" name="admin_login" class="login loginmodal-submit" value="Login">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+			<!-- student sign in modal -->
+
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" style="width:30%;">
+    	<div class="modal-content">
+   			<br>
+    		<div class="bs-example bs-example-tabs">
+        		<ul id="myTab" class="nav nav-tabs">
+              		<li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+              		<li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+            	</ul>
+        	</div>
+      		<div class="modal-body">
+        		<div id="myTabContent" class="tab-content">
+        			<div class="tab-pane fade active in" id="signin">
+            			<form class="form-horizontal" id="loginForm" action="student_login.php" method="post">
+            				<fieldset>
+            					<!-- Sign In Form -->
+            					<!-- Text input-->
+            					<div class="alert alert-danger" id="wrong_cred" role="alert" style="display: none;">
+  									wrong credentials!!
+								</div>
+            					<div class="control-group">
+              						<label class="control-label" for="userid">Email:</label>
+              						<div class="controls">
+                						<input required="required" id="login_email" type="email" class="form-control" name="login_email" placeholder="Email" class="input-medium">
+              						</div>
+            					</div>
+            					<!-- Password input-->
+            					<div class="control-group">
+              						<label class="control-label" for="passwordinput">Password:</label>
+              						<div class="controls">
+                						<input required="required" class="form-control" type="password" 
+                						name="login_password" placeholder="**********" class="input-medium">
+	              					</div>
+     	       					</div>
+     	       					<!-- Button -->
+								<div class="control-group">
+              						<label class="control-label" for="signin"></label>
+              						<div class="controls">
+              							<center>
+                							<button id="doLogin" name="student_login"  type="submit" class="btn btn-success" style="width:50%;font-size: 15px;">Login</button>
+
+                						</center>
+              						</div>
+            					</div>
+            				</fieldset>
+           	 			</form>
+        			</div>
+        			<div class="tab-pane fade" id="signup">
+            			<form class="form-horizontal" id="register-form"  action="student_register.php" method="post">
+            				<fieldset>
+	            				<!-- Sign Up Form -->
+	            				<!-- Text input-->
+	            				<div class="control-group">
+	              					<label class="control-label" for="Email">Email:</label>
+	              					<div class="controls">
+	                					<input id="email" name="register_email" class="form-control input-large" type="email" placeholder="Email" required="required">
+	              					</div>
+	            				</div>
+	            				<!-- Text input-->
+	            				<div class="control-group">
+	              					<label class="control-label" for="userid">Username:</label>
+	              					<div class="controls">
+	                					<input id="username" name="register_userid" class="form-control" type="text" placeholder="Username" class="input-large" required="required">
+	              					</div>
+	            				</div>
+	          					<!--contact details-->
+	            				<div class="control-group">
+	              					<label class="control-label" for="contact">Contact No.:</label>
+	              					<div class="controls">
+	                					<input id="contact" name="register_contact" class="form-control input-large" type="number" pattern="\d{10}$" placeholder="Enter 10 digit contact no." required="required">
+	              					</div>
+	            				</div>
+	            				<!-- Password input-->
+	            				<div class="control-group">
+	              					<label class="control-label" for="password">Password:</label>
+	              					<div class="controls">
+	                					<input id="password" name="register_password" class="form-control" pattern=".{8,15}" type="password" placeholder="Password" class="input-large" required="" required-title="choose password b/w 8 to 15 characters">
+	              					</div>
+	            				</div>
+	           					<!-- Text input-->
+	            				<!-- <div class="control-group">
+	              					<label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+	              					<div class="controls">
+	                					<input id="register_confirm_password" class="form-control" name="reenterpassword" type="password" placeholder="Re-enter password" class="input-large" required="required">
+	              					</div>
+	            				</div> -->
+	          					<!-- Button -->
+	            				<div class="control-group">
+	              					<label class="control-label" for="confirmsignup"></label>
+	              					<div class="controls">
+	              						<center>	
+		                					<button id="doRegister" type="submit" name="student_signup" class="btn btn-success center-block" style="width:50%;font-size: 15px;">Sign Up</button>
+	                					</center>
+	              					</div>
+	            				</div>
+        					</fieldset>
+            			</form>
+      				</div>
+    			</div>
+    		</div>
+    		<div class="modal-footer" >
+    			<center>
+        			<button type="button" class="btn btn-danger" data-dismiss="modal" style="width:50%;font-size: 15px;">Close</button>
+        		</center>
+    		</div>
+		</div>
+  	</div>
+</div>
+
+		<!-- background image -->
+
+
+<div class="back_img ">
+	 <img src="img/pic2.jpg" alt="pic2" class="img img-responsive" id="pic1">
+		
+		<h2 id="feed_head" style="color:white">Student Feedback</h2>
+</div>
+
+<script type="text/javascript">
+	function AlertIt() {
+		alert('please login to continue');
+		 
+	}
+</script>
+
+<a href="javascript:AlertIt();">click me</a>
+
+</body>
+</html>
