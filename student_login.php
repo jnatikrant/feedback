@@ -33,6 +33,8 @@ if(isset($_POST['student_login']))
    else
    {
     echo"Entered username or password is incorrect"."<br>"."Go back again and try to login with correct credentials";
+    
+    
 		
    }
  }

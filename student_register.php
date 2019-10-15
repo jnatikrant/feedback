@@ -15,12 +15,12 @@ $contact = mysqli_real_escape_string($link, $_REQUEST['register_contact']);
 $password = mysqli_real_escape_string($link, $_REQUEST['register_password']);
 
 
-$hashFormat = "$2y$10$";
+/*$hashFormat = "$2y$10$";
 $salt = "iusesomecrazystrings22";
 $hashF_and_salt = $hashFormat.$salt;
 
 $password = crypt($password,$hashF_and_salt);
-
+*/
 
 // attempt insert query execution
 	$sql = "INSERT INTO register_student (Email,username ,contact ,password) VALUES ('$Email', '$username', '$contact','$password')";
